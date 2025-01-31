@@ -1,33 +1,96 @@
 #include <iostream>
-#include <FL/Fl.H>
-#include <FL/Fl_Window.H>
-#include <FL/Fl_Button.H>
-#include <FL/Fl_Input.H>
-#include <FL/Fl_Hold_Browser.H>
+#include <string>
+#include <list>
+#include <ctime>
 
 using namespace std;
 
-Fl_Window *window = new Fl_Window(10,10,300,300,"TaskHub");
-Fl_Button *add_task_button = new Fl_Button(10,10,75,25,"Add Task");
-Fl_Button *delete_task_button = new Fl_Button(100,10,100,25,"Delete Task");
-Fl_Input *input = new Fl_Input(90,50,230,25,"Enter Task: ");
-Fl_Hold_Browser *listbox = new Fl_Hold_Browser(10,80,280,200, "Tasks");
+// Classe que representa um item da lista de tarefas
+class Tarefa {
+private:
+    int id;
+    string descricao;
+    bool concluida;
 
-void add_task(Fl_Widget*, void*) {
-    if (input->value() != "") {
-        listbox->add(input->value());
-        input->value("");
+public:
+    // Construtor padrão
+    Tarefa() : id(0), descricao(""), concluida(false) {}
+    ~Tarefa() = default;
+
+    // Método para criar uma nova tarefa
+    bool criar(string nova_descricao) {
+        id = rand() % 100 + 1; // Gera um ID aleatório entre 1 e 100
+        descricao = nova_descricao;
+        return true;
     }
-}
 
-void delete_task(Fl_Widget*, void*) {
-    listbox->remove(listbox->value());
-}
+    // Métodos getters
+    int obter_id() { return id; }
+    string obter_descricao() { return descricao; }
+    bool esta_concluida() { return concluida; }
+
+    // Método setter para marcar a tarefa como concluída
+    void definir_concluida(bool valor) { concluida = valor; }
+};
 
 int main() {
-    Fl::scheme("gtk+"); // Adicione o ponto e vírgula aqui
-    add_task_button->callback(add_task);
-    delete_task_button->callback(delete_task);
-    window->show();
-    return Fl::run();
+    char opcao;
+    int id_digitado;
+    string descricao_digitada;
+    string versao = "v0.2.0";
+    list<Tarefa> lista_tarefas;
+    list<Tarefa>::iterator it;
+
+    srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios
+
+    lista_tarefas.clear(); // Limpa a lista de tarefas
+
+    while (1) {
+        system("cls"); // Limpa a tela (no Windows)
+        cout << "Gerenciador de Tarefas - " << versao << endl << endl;
+
+        // Exibe a lista de tarefas
+        for (it = lista_tarefas.begin(); it != lista_tarefas.end(); it++) {
+            string status = it->esta_concluida() ? "Concluida" : "Pendente";
+            cout << it->obter_id() << " | " << it->obter_descricao() << " | " << status << endl;
+        }
+
+        if (lista_tarefas.empty()) {
+            cout << "Adicione sua primeira tarefa!" << endl;
+        }
+
+        cout << endl;
+        cout << "[a] Adicionar uma nova tarefa" << endl;
+        cout << "[c] Concluir uma tarefa" << endl;
+        cout << "[s] Sair" << endl;
+        cout << "Escolha: ";
+        cin >> opcao;
+
+        if (opcao == 's') {
+            cout << "Tenha um otimo dia!" << endl;
+            break;
+        } else if (opcao == 'a') {
+            cout << "Digite a descrição da nova tarefa: ";
+            cin.clear();
+            cin.ignore();
+            getline(cin, descricao_digitada);
+
+            Tarefa nova_tarefa;
+            nova_tarefa.criar(descricao_digitada);
+            lista_tarefas.push_back(nova_tarefa);
+
+        } else if (opcao == 'c') {
+            cout << "Digite o ID da tarefa a ser concluida: ";
+            cin >> id_digitado;
+
+            for (it = lista_tarefas.begin(); it != lista_tarefas.end(); it++) {
+                if (id_digitado == it->obter_id()) {
+                    it->definir_concluida(true);
+                    break;
+                }
+            }
+        }
+    }
+
+    return 0;
 }
