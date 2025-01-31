@@ -18,24 +18,35 @@ Antes de compilar e rodar o programa, é necessário instalar a biblioteca **FLT
    vcpkg install fltk
    
 ### Linux (Ubuntu/Debian)
+```sh
 sudo apt update
 sudo apt install libfltk1.3-dev
-
+```
 ### macOS (Homebrew)
+```sh
 brew install fltk
+```
 
 ## Compilação e Execução
 ### Windows
 Se o FLTK foi instalado manualmente, compile com:
+```sh
 g++ taskhub.cpp -o taskhub -I<fltk_include_path> -L<fltk_lib_path> -lfltk
+```
 
 Caso tenha usado o vcpkg:
+```sh
 g++ taskhub.cpp -o taskhub -I"C:/vcpkg/installed/x64-windows/include" -L"C:/vcpkg/installed/x64-windows/lib" -lfltk
+```
 
 ### Linux/macOS
+```sh
 g++ taskhub.cpp -o taskhub `fltk-config --cxxflags --ldflags`
+```
 para executar:
+```sh
 ./taskhub
+```
 
 
 
