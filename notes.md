@@ -1,27 +1,43 @@
-*LISTA DE TAREFAS*
-Uma aplicação simples de lista de tarefas com C++ utilizando o framework FLTK. O aplicativo tem uma interface gráfica que permite ao usuário adicionar e remover tarefas de forma intuitiva.
+# Gerenciador de Tarefas em C++
 
-*TAREFAS A SEREM DESENVOLVIDAS NO PROJETO*
--Criar a estrutura básica da interface utilizando o FLTK.
--Implementar a funcionalidade de adicionar tarefas.
--Implementar a funcionalidade de remover tarefas.
--Mostrar as tarefas adicionadas em um Fl_Hold_Browser (listbox).
+Este é um simples gerenciador de tarefas implementado em C++. O programa permite ao usuário adicionar novas tarefas, marcar tarefas como concluídas e visualizar a lista de tarefas.
 
-*FUNCIONALIDADES PRINCIPAIS*
--Adicionar Tarefa: O usuário pode adicionar uma tarefa através de um campo de texto Fl_Input, que captura a entrada e registra a tarefa na lista de tarefas exibida no Fl_Hold_Browser.
--Remover Tarefa: O usuário pode selecionar uma tarefa da lista e removê-la com um botão de exclusão na interface.
--Visualização: As tarefas adicionadas são mostradas dentro de uma lista, com as opções de adicionar e remover facilmente acessíveis.
+## Estrutura do Código
 
-*ESTRUTURA DO CÓDIGO*
--Fl_Input: Usado para capturar o texto da tarefa.
--Fl_Hold_Browser: Exibe a lista de tarefas.
--Botões:
-*"Add Task"* para adicionar uma nova tarefa.
-*"Delete Task*" para remover a tarefa selecionada.
+### Classe `Tarefa`
 
-*FLUXO DE TRABALHO*
--Tela Inicial: A interface gráfica será carregada, exibindo um campo para inserir o texto da tarefa e a lista de tarefas já registradas.
--Adicionar Tarefa: O usuário insere o texto da tarefa e clica no botão de adicionar para registrar a nova tarefa na lista.
--Remover Tarefa: O usuário seleciona uma tarefa na lista e clica no botão de deletar para removê-la.
+A classe `Tarefa` representa um item da lista de tarefas. Ela possui os seguintes atributos e métodos:
 
-Este projeto tem como objetivo simplificar a interação com tarefas, utilizando C++ e FLTK, criando uma interface gráfica funcional e intuitiva.
+- **Atributos:**
+  - `id`: Um identificador único para a tarefa.
+  - `descricao`: Uma string que descreve a tarefa.
+  - `concluida`: Um booleano que indica se a tarefa foi concluída.
+
+- **Métodos:**
+  - `Tarefa()`: Construtor padrão que inicializa os atributos.
+  - `~Tarefa()`: Destrutor padrão.
+  - `criar(string nova_descricao)`: Método para criar uma nova tarefa, gerando um ID aleatório e definindo a descrição.
+  - `obter_id()`: Retorna o ID da tarefa.
+  - `obter_descricao()`: Retorna a descrição da tarefa.
+  - `esta_concluida()`: Retorna `true` se a tarefa estiver concluída, caso contrário, retorna `false`.
+  - `definir_concluida(bool valor)`: Define o status de conclusão da tarefa.
+
+### Função `main`
+
+A função `main` é o ponto de entrada do programa. Ela gerencia a interação com o usuário e a manipulação da lista de tarefas.
+
+- **Variáveis:**
+  - `opcao`: Armazena a escolha do usuário no menu.
+  - `id_digitado`: Armazena o ID da tarefa a ser marcada como concluída.
+  - `descricao_digitada`: Armazena a descrição da nova tarefa.
+  - `versao`: Armazena a versão do programa.
+  - `lista_tarefas`: Uma lista de objetos `Tarefa`.
+  - `it`: Um iterador para percorrer a lista de tarefas.
+
+- **Fluxo do Programa:**
+  1. Inicializa a semente do gerador de números aleatórios.
+  2. Limpa a lista de tarefas.
+  3. Entra em um loop infinito que exibe o menu e processa as escolhas do usuário:
+     - **Adicionar Tarefa:** O usuário digita a descrição da tarefa, e uma nova tarefa é criada e adicionada à lista.
+     - **Concluir Tarefa:** O usuário digita o ID da tarefa, e o programa marca a tarefa correspondente como concluída.
+     - **Sair:** O programa exibe uma mensagem de despedida e encerra.
