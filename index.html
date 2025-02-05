@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskHub</title>
+    <style>
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+            text-align: center;
+        }
+
+        /* Estilização da Navbar */
+        nav {
+            background-color: #344697;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-right: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #6452da;
+        }
+
+        /* Header */
+        header {
+            background: transparent;
+            padding: 10px 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 10px;
+            border-bottom: 3px solid #ddd;
+        }
+
+        /* Seções */
+        section {
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #344697;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #recursos ul li {
+            display: inline-flex;
+            background: #955ed3;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.2s;
+            margin: 10px;
+        }
+
+        #recursos ul li:hover {
+            background: #7e3fc0;
+            transform: scale(1.05);
+        }
+
+        #recursos ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #fff;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 2px solid #ddd;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        #midia img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            section {
+                width: 90%;
+                padding: 30px 10px;
+            }
+
+            header {
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+    </header>
+    <nav>
+        <div class="logo">TaskHub</div>
+        <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#fluxo">Fluxo</a></li>
+            <li><a href="#funcionalidades">Funcionalidades</a></li>
+            <li><a href="#poo">POO</a></li>
+            <li><a href="#midia">Mídia</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+        </ul>
+    </nav>        
+    </header>
+
+    <section id="sobre">
+        <h2>Sobre o Projeto</h2>
+        <p>Uma plataforma eficiente para gerenciar suas tarefas com organização e praticidade.</p>
+        <p>O TaskHub é um sistema desenvolvido em C++ que permite gerenciar tarefas diárias de forma simples e eficaz.</p>
+    </section>
+
+    <section id="fluxo">
+        <h2>Fluxo do Sistema</h2>
+        <p>O sistema funciona de maneira interativa, permitindo que o usuário:</p>
+        <ul>
+            <li>Adicione novas tarefas informando uma descrição.</li>
+            <li>Marque tarefas como concluídas pelo ID.</li>
+            <li>Visualize a lista de tarefas pendentes ou concluídas.</li>
+            <li>Encerre o programa a qualquer momento.</li>
+        </ul>
+    </section>
+
+    <section id="funcionalidades">
+        <h2>Principais Funcionalidades</h2>
+        <ul>
+            <li>Criação, edição e exclusão de tarefas</li>
+            <li>Filtragem e categorização de tarefas</li>
+            <li>Autenticação de usuários</li>
+            <li>Interface amigável com frontend em HTML e CSS</li>
+        </ul>
+    </section>
+
+    <section id="poo">
+        <h2>Uso de Programação Orientada a Objetos</h2>
+        <p>O TaskHub utiliza conceitos fundamentais de POO:</p>
+        <ul>
+            <li><strong>Encapsulamento:</strong> A classe Tarefa protege seus atributos e só permite acesso controlado por métodos específicos.</li>
+            <li><strong>Abstração:</strong> A classe representa tarefas do mundo real com atributos e comportamentos definidos.</li>
+            <li><strong>Métodos:</strong> Funções controladas para manipular o estado das tarefas.</li>
+        </ul>
+    </section>
+
+    <section id="midia">
+        <h2>Mídia</h2>
+        <img src="image.png" alt="Screenshot do TaskHub">
+    </section>
+
+    <section id="recursos">
+        <h2>Recursos</h2>
+        <ul>
+            <li><a href="https://github.com/angelinasnts/TaskHub">Código Fonte</a></li>
+            <li><a href="relatorio.pdf">Relatório do Projeto</a></li>
+            <li><a href="https://youtu.be/A6DB6hD9CwU">Vídeo de Apresentação</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 TaskHub - Desenvolvido por Angelina Santos e Adrielly Alexandre</p>
+    </footer>
+</body>
+</html>
